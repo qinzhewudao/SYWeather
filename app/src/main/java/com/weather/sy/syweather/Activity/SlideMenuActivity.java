@@ -6,11 +6,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.byhieglibrary.Activity.BaseActivity;
-import com.weather.sy.syweather.Fragment.AboutFragment;
+import com.weather.sy.syweather.Fragment.CalendarFragment;
 import com.weather.sy.syweather.Fragment.FutureFragment;
-import com.weather.sy.syweather.Fragment.LaboratoryFragment;
 import com.weather.sy.syweather.Fragment.SettingFragment;
 import com.weather.sy.syweather.Fragment.ShareFragment;
+import com.weather.sy.syweather.Fragment.TravelplanFragment;
 import com.weather.sy.syweather.Fragment.WikiFragment;
 import com.weather.sy.syweather.R;
 import com.weather.sy.syweather.Tools.Constants;
@@ -21,6 +21,8 @@ public class SlideMenuActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     public Toolbar toolbar;
+
+    BaseActivity a = this;
 
     private FragmentManager fm;
 
@@ -57,23 +59,23 @@ public class SlideMenuActivity extends BaseActivity {
                 fm.beginTransaction()
                         .add(R.id.fragment, fragment,ShareFragment.TAG).commit();
                 break;
-            case Constants.LAB:
-                toolbar.setTitle(R.string.laboratory);
-                fragment = new LaboratoryFragment();
+            case Constants.TRAVELPLAN:
+                toolbar.setTitle(R.string.travelplan);
+                fragment = new TravelplanFragment(this);
                 fm.beginTransaction()
-                        .add(R.id.fragment, fragment,LaboratoryFragment.TAG).commit();
+                        .add(R.id.fragment, fragment, TravelplanFragment.TAG).commit();
+                break;
+            case Constants.CALENDAR:
+                toolbar.setTitle(R.string.calender);
+                fragment = new CalendarFragment(this);
+                fm.beginTransaction()
+                        .add(R.id.fragment, fragment, CalendarFragment.TAG).commit();
                 break;
             case Constants.WIKI:
                 toolbar.setTitle(R.string.wiki);
                 fragment = new WikiFragment();
                 fm.beginTransaction()
                         .add(R.id.fragment, fragment,WikiFragment.TAG).commit();
-                break;
-            case Constants.ABOUT:
-                toolbar.setTitle(R.string.about);
-                fragment = new AboutFragment();
-                fm.beginTransaction()
-                        .add(R.id.fragment, fragment,AboutFragment.TAG).commit();
                 break;
         }
 
@@ -102,7 +104,5 @@ public class SlideMenuActivity extends BaseActivity {
     public void initTheme() {
 
     }
-
-
 
 }

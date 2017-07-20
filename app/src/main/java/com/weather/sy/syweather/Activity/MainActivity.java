@@ -203,7 +203,6 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
         int[] images = {R.mipmap.ic_trending_up_black_24dp,
                 R.mipmap.ic_settings_black_24dp,
                 R.mipmap.ic_share_black_24dp,
-                R.mipmap.ic_help_black_24dp,
                 R.mipmap.ic_hourglass_empty_black_24dp,
                 R.mipmap.ic_wikipedia,
                 R.mipmap.ic_more_black_24dp};
