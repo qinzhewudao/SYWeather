@@ -1,8 +1,10 @@
 package com.weather.sy.syweather.Activity;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.example.byhieglibrary.Activity.BaseActivity;
@@ -21,10 +23,8 @@ public class SlideMenuActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     public Toolbar toolbar;
-
-    BaseActivity a = this;
-
     private FragmentManager fm;
+    private  CalendarFragment transportdata;
 
 
     @Override
@@ -61,15 +61,15 @@ public class SlideMenuActivity extends BaseActivity {
                 break;
             case Constants.TRAVELPLAN:
                 toolbar.setTitle(R.string.travelplan);
-                fragment = new TravelplanFragment(this);
+                fragment = new TravelplanFragment();
                 fm.beginTransaction()
                         .add(R.id.fragment, fragment, TravelplanFragment.TAG).commit();
                 break;
             case Constants.CALENDAR:
                 toolbar.setTitle(R.string.calender);
-                fragment = new CalendarFragment(this);
+                transportdata = new CalendarFragment();
                 fm.beginTransaction()
-                        .add(R.id.fragment, fragment, CalendarFragment.TAG).commit();
+                        .add(R.id.fragment, transportdata, CalendarFragment.TAG).commit();
                 break;
             case Constants.WIKI:
                 toolbar.setTitle(R.string.wiki);
@@ -85,9 +85,21 @@ public class SlideMenuActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("hahaha","我们得到请求码了"+requestCode+"返回码："+resultCode);
+        if(requestCode == 10 && resultCode == 2){
+            Log.e("hahaha","我们准备添加事件了");
+            try {
+                transportdata.setSchedule(data);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     public void initEvent() {

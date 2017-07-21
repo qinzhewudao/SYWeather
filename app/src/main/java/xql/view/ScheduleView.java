@@ -229,7 +229,11 @@ public class ScheduleView extends LinearLayout
         switch (v.getId()){
             case R.id.add_route_image:
                 if(addRouteListener != null){
-                    addRouteListener.addRoute((View)monthDataView.getTag());
+                    try {
+                        addRouteListener.addRoute((View)monthDataView.getTag());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                break;
         }
@@ -239,11 +243,8 @@ public class ScheduleView extends LinearLayout
         this.addRouteListener = addRouteListener;
     }
     public interface AddRouteListener{
-        void addRoute(View view);
+        void addRoute(View view) throws Exception;
     }
-
-
-
 
     public int getCurrentYear(){
         return currentYear;

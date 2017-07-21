@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,9 +12,6 @@ import android.widget.TimePicker;
 
 import com.weather.sy.syweather.R;
 
-/**
- * Created by sy on 2016/9/13.
- */
 public class ADDDouteActivity extends AppCompatActivity
         implements View.OnClickListener {
 
@@ -37,6 +35,7 @@ public class ADDDouteActivity extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_route_layout);
+        Log.e("hahha","我来自于添加事件");
         bindView();
         initData();
     }
@@ -92,7 +91,8 @@ public class ADDDouteActivity extends AppCompatActivity
         bundle.putInt(minuteKey,minute);
         bundle.putString(dataKey,data);
         intent.putExtras(bundle);
-        this.setResult(0,intent);
+        this.setResult(2,intent);
         this.finish();
     }
 }
+

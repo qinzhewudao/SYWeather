@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/whitesmoke"
     android:layout_height="match_parent">
     <ScrollView android:id="@+id/scrall_view"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:layout_width="wrap_content">
         <RelativeLayout android:id="@+id/relative_view"
             android:layout_width="match_parent"
@@ -12,12 +14,16 @@
                 android:id="@+id/time_pick"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:timePickerMode="spinner"/>
+                android:timePickerMode="spinner"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/route_data_text"
+                android:layout_alignEnd="@+id/route_data_text" />
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#2d2626"
-                android:layout_above="@id/time_pick"
-                android:text="请选择您的闹钟时间:"/>
+                android:id="@+id/clork"
+                android:textColor="#1f142d"
+                android:textSize="18sp"
+                android:text="闹钟时间:"/>
             <EditText android:id="@+id/route_data_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,7 +50,7 @@
                     android:clickable="true"
                     android:text="确 定"
                     android:layout_weight="1"/>
-                </LinearLayout>
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

@@ -26,7 +26,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- SD卡读取权限，用户写入离线定位数据 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-
+    <!-- SD卡读取权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <application
         android:name="com.weather.sy.syweather.MyApplication"
         android:allowBackup="true"
@@ -132,6 +134,9 @@
             android:name="com.weather.sy.syweather.Activity.WikiResultActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.weather.sy.syweather.Activity.SearchViewSpotActivity"></activity>
+        <activity
+            android:name="xql.activity.ADDDouteActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

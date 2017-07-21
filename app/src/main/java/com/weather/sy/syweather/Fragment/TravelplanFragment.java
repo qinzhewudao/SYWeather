@@ -1,6 +1,7 @@
 package com.weather.sy.syweather.Fragment;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -37,9 +38,10 @@ public class TravelplanFragment extends BaseFragment {
     public static final String TAG = "TravelplanFragment";
 
 
-    public TravelplanFragment(BaseActivity a ) {
-        this.a = a;
-        // Required empty public constructor
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.a = (BaseActivity)context;
     }
 
 

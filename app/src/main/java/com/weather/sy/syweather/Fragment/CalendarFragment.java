@@ -1,8 +1,10 @@
 package com.weather.sy.syweather.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +22,6 @@ import xql.routeinfo.DayInfo;
 import xql.routeinfo.Info;
 import xql.view.ScheduleView;
 
-
-/**
- * Created by hasee on 2017/7/20.
- */
-
 public class CalendarFragment extends BaseFragment{
 
     private static String yearKey  = "year";
@@ -38,18 +35,17 @@ public class CalendarFragment extends BaseFragment{
 
     public static final String TAG = "CalendarFragment";
 
-
-    public CalendarFragment(BaseActivity a) {
-        this.a = a;
-        // Required empty public constructor
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.a = (BaseActivity)context;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        getActivity().setTheme(R.style.DayTheme);
+        a.setTheme(R.style.DayTheme);
         if (MyApplication.nightMode2()) {
             initNightView(R.layout.night_mode_overlay);
         }
@@ -63,9 +59,10 @@ public class CalendarFragment extends BaseFragment{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         scheduleView = (ScheduleView) view.findViewById(R.id.schedule_view);
+
         scheduleView.setAddRouteListener(new ScheduleView.AddRouteListener() {
             @Override
-            public void addRoute(View view){
+            public void addRoute(View view) throws Exception {
                 if(view == null){
                     Toast.makeText(a.getApplicationContext(),"请选择日期",Toast.LENGTH_SHORT).show();
                     return;
@@ -75,12 +72,16 @@ public class CalendarFragment extends BaseFragment{
                 bundle.putInt(yearKey,scheduleView.getCurrentYear());
                 bundle.putInt(monthKey,scheduleView.getCurrentMonth());
                 bundle.putInt(daykey,scheduleView.getSelectDay());
+
                 intent.putExtras(bundle);
-                startActivityForResult(intent,100);
+                //跳转到添加事件
+                getActivity().startActivityForResult(intent,10);
+
             }
         });
-    }
 
+    }
+/*
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println("--->"+requestCode+" "+resultCode);
@@ -102,8 +103,26 @@ public class CalendarFragment extends BaseFragment{
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
+    public void setSchedule(Intent intent) throws Exception {
+        //添加事件
+        Bundle bundle1 = intent.getExtras();
+        int year = bundle1.getInt(yearKey);
+        int month = bundle1.getInt(monthKey);
+        int day = bundle1.getInt(daykey);
+        int hour = bundle1.getInt(hourkey);
+        int minute = bundle1.getInt(minuteKey);
+        String mydata = bundle1.getString(dataKey);
+        if(bundle1.getString(dataKey) != null)
+        {
+
+            saveRouteData(year,month,day,hour,minute,mydata);
+
+        }
+        scheduleView.mySelect(year,month,day);
+        Log.e("hahaha","我在抢占资源");
+    }
     //保存文件
     private void saveRouteData(int year,int month,int day
             ,int hour,int minute,String data) throws Exception {
@@ -132,6 +151,5 @@ public class CalendarFragment extends BaseFragment{
         infos.addDayRouteList(dayinfoKey,dayInfo);
 
         FileTool.writeAllInfo(a.getApplicationContext(),infos);
-
     }
 }
