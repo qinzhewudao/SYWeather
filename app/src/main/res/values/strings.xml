@@ -4,9 +4,6 @@
 
     <!--menu菜单中的文字-->
     <string name="location">定位</string>
-    <string name="feedback">期待反馈</string>
-    <string name="like">喜欢</string>
-
 
     <!--侧边栏list中的文字-->
     <string name="scenic_spot">景点</string>

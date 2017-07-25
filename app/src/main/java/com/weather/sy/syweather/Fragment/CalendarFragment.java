@@ -35,6 +35,10 @@ public class CalendarFragment extends BaseFragment{
 
     public static final String TAG = "CalendarFragment";
 
+    public CalendarFragment(BaseActivity a) {
+        this.a = a;
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -81,29 +85,6 @@ public class CalendarFragment extends BaseFragment{
         });
 
     }
-/*
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("--->"+requestCode+" "+resultCode);
-        if(requestCode == 100 && resultCode == 0){
-            System.out.println("--->+"+requestCode+" "+resultCode+data);
-            Bundle bundle = data.getExtras();
-            int year = bundle.getInt(yearKey);
-            int month = bundle.getInt(monthKey);
-            int day = bundle.getInt(daykey);
-            int hour = bundle.getInt(hourkey);
-            int minute = bundle.getInt(minuteKey);
-            String mydata = bundle.getString(dataKey);
-            System.out.println("--->my"+year+" "+month+" "+day+" "+hour+" "+minute+" "+mydata);
-            try {
-                saveRouteData(year,month,day,hour,minute,mydata);
-                scheduleView.mySelect(year,month,day);
-                System.out.println("--->++"+requestCode+" "+resultCode);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
 
     public void setSchedule(Intent intent) throws Exception {
         //添加事件

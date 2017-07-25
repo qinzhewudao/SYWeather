@@ -9,11 +9,6 @@ import android.widget.ProgressBar;
 
 import com.weather.sy.syweather.R;
 
-/**
- * Created by byhieg on 16-9-30.
- * Mail byhieg@gmail.com
- */
-
 public class ProcessWebView extends WebView {
 
     private ProgressBar mProgressBar;

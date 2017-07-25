@@ -2,11 +2,6 @@ package com.weather.sy.syweather.Tools;
 
 import java.io.Serializable;
 
-/**
- * Created by byhieg on 16-9-25.
- * Mail byhieg@gmail.com
- */
-
 public class Constants implements Serializable{
 
 

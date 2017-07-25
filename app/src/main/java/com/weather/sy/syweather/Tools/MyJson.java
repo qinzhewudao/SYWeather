@@ -3,9 +3,6 @@ package com.weather.sy.syweather.Tools;
 import com.weather.sy.syweather.Bean.Weather;
 import com.weather.sy.syweather.Bean.WeatherBean;
 
-/**
- * Created by byhieg on 16-8-9.
- */
 public class MyJson {
 
     public static Weather getWeather(WeatherBean weatherBean){

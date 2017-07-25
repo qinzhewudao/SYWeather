@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,15 +30,40 @@ public class ADDDouteActivity extends AppCompatActivity
     private static String hourkey  = "hour";
     private static String minuteKey = "minute";
     private static String dataKey  = "data";
-
+    public Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_route_layout);
+        toolbar = (Toolbar)findViewById(R.id.toolbaradd);
         Log.e("hahha","我来自于添加事件");
-        bindView();
-        initData();
+        try
+        {
+            toolbar.setTitle(R.string.travelplan);
+            bindView();
+            initData();
+        }catch (Exception e)
+        {
+            Log.e("yexu","是这儿的问题么"+e);
+        }
+
+        try{
+            setSupportActionBar(toolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+                toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+                    public void onClick(View view){
+                        finish();
+                        setResult(10,null);
+                    }
+                });
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
+        }catch (Exception e)
+        {
+            Log.e("sjad","可能是找不到actionbar"+e);
+        }
     }
 
     private void bindView(){
@@ -66,6 +92,7 @@ public class ADDDouteActivity extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.no_button:
+                Log.e("hahah","取消添加日程");
                 finish();
                 break;
             case R.id.yes_button:
@@ -92,6 +119,7 @@ public class ADDDouteActivity extends AppCompatActivity
         bundle.putString(dataKey,data);
         intent.putExtras(bundle);
         this.setResult(2,intent);
+        Log.e("hahah","添加日程成功");
         this.finish();
     }
 }

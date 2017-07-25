@@ -12,10 +12,6 @@ import android.view.View;
 
 import com.weather.sy.syweather.R;
 
-/**
- * Created by byhieg on 16-9-15.
- * Mail byhieg@gmail.com
- */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private int mOrientation = LinearLayoutManager.VERTICAL ;
 

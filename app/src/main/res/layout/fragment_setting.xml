@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/lightgray"
-    tools:context="com.weather.byhieg.easyweather.com.weather.byhieg.syweather.Fragment.SettingFragment">
+    tools:context="com.weather.sy.syweather.Fragment.SettingFragment">
 
 
     <RelativeLayout

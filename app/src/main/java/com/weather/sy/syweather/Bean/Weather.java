@@ -3,10 +3,6 @@ package com.weather.sy.syweather.Bean;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by shiqifeng on 2016/6/28.
- * Mail:byhieg@gmail.com
- */
 public class Weather implements Serializable {
 
     /**
@@ -254,10 +250,7 @@ public class Weather implements Serializable {
         private String id;
         private String lat;
         private String lon;
-        /**
-         * loc : 2016-06-28 13:51
-         * utc : 2016-06-28 05:51
-         */
+
 
         private UpdateBean update;
 

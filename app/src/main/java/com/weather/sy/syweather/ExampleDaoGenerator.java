@@ -65,8 +65,8 @@ public class ExampleDaoGenerator {
     }
 
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(1,"com.weather.byhieg.easyweather.Db");
-        schema.setDefaultJavaPackageDao("com.weather.byhieg.easyweather.Db");
+        Schema schema = new Schema(1,"com.weather.sy.easyweather.Db");
+        schema.setDefaultJavaPackageDao("com.weather.sy.easyweather.Db");
         addProvince(schema);
         addCity(schema);
         addCityWeather(schema);

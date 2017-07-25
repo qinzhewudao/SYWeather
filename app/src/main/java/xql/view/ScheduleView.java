@@ -20,9 +20,6 @@ import xql.routeinfo.AllInfo;
 import xql.routeinfo.DayInfo;
 import xql.routeinfo.Info;
 
-/**
- * Created by sy on 2016/9/8.
- */
 public class ScheduleView extends LinearLayout
         implements SelecteView.OnSetChangeListener
         ,MonthDataView.OnDaySelectListener
@@ -56,11 +53,6 @@ public class ScheduleView extends LinearLayout
     private static String ListRoute      = "您的行程如下：";
     private static final String Filename = "myschdule.route";
 
-
-    public ScheduleView(Context context) {
-        super(context);
-        init(context);
-    }
 
     public ScheduleView(Context context, AttributeSet attrs) {
         super(context, attrs);

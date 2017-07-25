@@ -8,9 +8,7 @@ import java.lang.reflect.Type;
 
 import okhttp3.Request;
 
-/**
- * Created by byhieg on 16-4-16.
- */
+
 public abstract class ResultCallback <T>{
     Type mType;
 

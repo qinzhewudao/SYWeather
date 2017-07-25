@@ -25,11 +25,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by byhieg on 16-10-1.
- * Mail byhieg@gmail.com
- */
-
 public class ImageUtils {
 
 

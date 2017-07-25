@@ -8,10 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by byhieg on 16-9-10.
- * Mail byhieg@gmail.com
- */
 @SuppressLint("SimpleDateFormat")
 public class DateUtil {
 
@@ -53,6 +49,7 @@ public class DateUtil {
 
             }
         }
+
         return myWeek;
     }
 

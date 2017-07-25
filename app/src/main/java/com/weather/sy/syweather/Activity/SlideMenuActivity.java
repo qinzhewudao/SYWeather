@@ -1,9 +1,11 @@
 package com.weather.sy.syweather.Activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 
@@ -12,12 +14,13 @@ import com.weather.sy.syweather.Fragment.CalendarFragment;
 import com.weather.sy.syweather.Fragment.FutureFragment;
 import com.weather.sy.syweather.Fragment.SettingFragment;
 import com.weather.sy.syweather.Fragment.ShareFragment;
-import com.weather.sy.syweather.Fragment.TravelplanFragment;
-import com.weather.sy.syweather.Fragment.WikiFragment;
 import com.weather.sy.syweather.R;
+import com.weather.sy.syweather.Service.NotificationService;
 import com.weather.sy.syweather.Tools.Constants;
 
 import butterknife.Bind;
+import xql.activity.ADDDouteActivity;
+import xql.view.ScheduleView;
 
 public class SlideMenuActivity extends BaseActivity {
 
@@ -61,21 +64,53 @@ public class SlideMenuActivity extends BaseActivity {
                 break;
             case Constants.TRAVELPLAN:
                 toolbar.setTitle(R.string.travelplan);
-                fragment = new TravelplanFragment();
-                fm.beginTransaction()
-                        .add(R.id.fragment, fragment, TravelplanFragment.TAG).commit();
+                try
+                {
+                    transportdata = new CalendarFragment(this);
+                    Intent intent = new Intent(this.getApplicationContext(), ADDDouteActivity.class);
+                    Bundle bundle = new Bundle();
+                    ScheduleView scheduleView =  (ScheduleView) findViewById(R.id.schedule_view);
+                    String yearKey  = "year";
+                    String monthKey = "month";
+                    String daykey   = "day";
+
+                    Time t=new Time(); // or Time t=new Time("GMT+8"); 加上Time Zone资料
+                    t.setToNow(); // 取得系统时间。
+                    int year = t.year;
+                    int month = t.month;
+                    int date = t.monthDay;
+                    bundle.putInt(yearKey,year);
+                    bundle.putInt(monthKey,month+1);
+                    bundle.putInt(daykey,date);
+
+                    intent.putExtras(bundle);
+                    Log.e("saja","我开始跳转了");
+                    startActivityForResult(intent,20);
+                }catch (Exception e)
+                {
+                    Log.e("jhaha","出行计划有问题："+e);
+                }
+
                 break;
             case Constants.CALENDAR:
                 toolbar.setTitle(R.string.calender);
-                transportdata = new CalendarFragment();
+                transportdata = new CalendarFragment(this);
                 fm.beginTransaction()
                         .add(R.id.fragment, transportdata, CalendarFragment.TAG).commit();
                 break;
             case Constants.WIKI:
-                toolbar.setTitle(R.string.wiki);
-                fragment = new WikiFragment();
-                fm.beginTransaction()
-                        .add(R.id.fragment, fragment,WikiFragment.TAG).commit();
+
+                //停止了notification服务
+                Intent i = new Intent();
+                i.setClass(this, NotificationService.class);
+                this.stopService(i);
+                //彻底关闭application
+                Intent startMain = new Intent(Intent.ACTION_MAIN);
+                startMain.addCategory(Intent.CATEGORY_HOME);
+                startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(startMain);
+                System.exit(0);
+
                 break;
         }
 
@@ -98,6 +133,23 @@ public class SlideMenuActivity extends BaseActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+        else if(requestCode == 20 && resultCode == 2){
+            try {
+                transportdata.setSchedule(data);
+                toolbar.setTitle(R.string.calender);
+                transportdata = new CalendarFragment(this);
+                fm.beginTransaction()
+                        .add(R.id.fragment, transportdata, CalendarFragment.TAG).commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if(requestCode == 20 && resultCode == 10){
+                toolbar.setTitle(R.string.calender);
+                transportdata = new CalendarFragment(this);
+                fm.beginTransaction()
+                        .add(R.id.fragment, transportdata, CalendarFragment.TAG).commit();
         }
     }
 

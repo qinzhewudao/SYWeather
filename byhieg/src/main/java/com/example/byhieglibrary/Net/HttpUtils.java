@@ -31,9 +31,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-/**
- * Created by byhieg on 16-4-16.
- */
 public  class HttpUtils {
     private static HttpUtils myOkHttp;
     private OkHttpClient okHttpClient;

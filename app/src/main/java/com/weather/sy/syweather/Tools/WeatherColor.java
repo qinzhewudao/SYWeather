@@ -2,10 +2,7 @@ package com.weather.sy.syweather.Tools;
 
 import com.weather.sy.syweather.R;
 
-/**
- * Created by shiqifeng on 2016/9/13.
- * Mail:byhieg@gmail.com
- */
+
 public class WeatherColor {
 
     public static int getWeatherColor(String weatherCode){

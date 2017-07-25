@@ -14,9 +14,6 @@ import java.util.Map;
 
 import okhttp3.Response;
 
-/**
- * Created by byhieg on 16-8-11.
- */
 public class NetTool {
 
     private final static int UPDATERATE = 60;

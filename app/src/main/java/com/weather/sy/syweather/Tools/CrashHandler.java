@@ -30,11 +30,6 @@ import java.util.TreeSet;
 
 import okhttp3.Request;
 
-/**
- * Created by byhieg on 16-10-8.
- * Mail byhieg@gmail.com
- */
-
 public class CrashHandler implements UncaughtExceptionHandler {
     /** Debug Log tag*/
     public static final String TAG = "CrashHandler";

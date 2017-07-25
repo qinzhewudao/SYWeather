@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/maincolor"
-    tools:context="com.weather.byhieg.easyweather.com.weather.byhieg.syweather.Activity.StartActivity">
+    tools:context="com.weather.sy.syweather.Activity.StartActivity">
 
     <com.weather.sy.syweather.View.TextShowView
         android:layout_centerInParent="true"

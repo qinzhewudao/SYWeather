@@ -2,11 +2,6 @@ package com.weather.sy.syweather.Bean;
 
 import java.io.Serializable;
 
-/**
- * Created by shiqifeng on 2016/9/21.
- * Mail:byhieg@gmail.com
- */
-
 public class WeekWeather implements Serializable {
 
     private int lowTemp;

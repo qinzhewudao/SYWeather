@@ -5,7 +5,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -22,18 +21,15 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -50,7 +46,6 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClientOption;
 import com.example.byhieglibrary.Activity.BaseActivity;
 import com.example.byhieglibrary.Utils.DateUtil;
-import com.example.byhieglibrary.Utils.DisplayUtil;
 import com.example.byhieglibrary.Utils.LogUtils;
 import com.weather.sy.syweather.Adapter.DrawerListAdapter;
 import com.weather.sy.syweather.Adapter.PopupWindowAdapter;
@@ -79,7 +74,6 @@ import java.util.Locale;
 
 import butterknife.Bind;
 
-import static com.example.byhieglibrary.Utils.DisplayUtil.getViewHeight;
 import static com.weather.sy.syweather.R.id.swipe_refresh;
 
 public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, ActivityCompat.OnRequestPermissionsResultCallback {
@@ -242,8 +236,7 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
 
     @Override
     public void initView() {
-        generateTextView();
-//        lineChart.invalidate();
+
         toolbar.setTitle("成都");
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -274,8 +267,6 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
         } else {
             doRefreshInNoData();
         }
-
-
     }
 
     @Override
@@ -293,21 +284,6 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.feedback:
-                        AlertDialog.Builder dialogBuilder;
-                        if (MyApplication.nightMode2()){
-                           dialogBuilder  = new AlertDialog.Builder(MainActivity.this, R.style.NightDialog);
-                        }else{
-                            dialogBuilder = new AlertDialog.Builder(MainActivity.this);
-                        }
-                       dialogBuilder.setTitle("反馈").setMessage("在使用过程中，有任何问题均可以发送到邮箱：byhieg@gmail.com").setPositiveButton("恩", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        }).show();
-                        break;
-
                     case R.id.location:
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED||
@@ -334,10 +310,6 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
 
                         break;
 
-                    case R.id.like:
-                        startActivity(LoveAppActivity.class);
-                        overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
-                        break;
                     case R.id.add_city:
                         startActivity(CityManageActivity.class);
                         overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
@@ -611,22 +583,6 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
                 }).show();
     }
 
-    public void generateTextView() {
-        TextView textView = new TextView(this);
-        textView.setText("天气易变，注意天气变化");
-        View[] view = {findViewById(R.id.toolbar), findViewById(R.id.view), findViewById(R.id.item_cloths), findViewById(R.id.item_sports)};
-        int totalHeight = 0;
-        for (View aView : view) {
-            totalHeight += getViewHeight(aView, true) + DisplayUtil.dip2px(this, 10);
-        }
-        int pxHeight = getmScreenHeight() - totalHeight;
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, pxHeight / 2);
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(ContextCompat.getColor(this, R.color.white));
-        textView.setLayoutParams(lp);
-        action_bar.addView(textView);
-
-    }
 
     @Override
     protected void onResume() {
@@ -743,7 +699,6 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
 
 
     class LocalReceiver extends BroadcastReceiver {
-
         @Override
         public void onReceive(Context context, Intent intent) {
             getHoursData();
@@ -755,7 +710,5 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
             }
         }
     }
-
-
 
 }

@@ -277,8 +277,6 @@ public class WeekWeatherView extends View {
         weeks = DateUtil.
                 getNextWeek(new SimpleDateFormat("yyyy-MM-dd").
                         parse(MyJson.getWeather(weatherBean).getDaily_forecast().get(0).getDate()));
-
-
     }
 
     public void notifyDateChanged(){
@@ -288,8 +286,6 @@ public class WeekWeatherView extends View {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
 }
 

@@ -13,10 +13,6 @@ import com.weather.sy.syweather.Db.LoveCity;
 import com.weather.sy.syweather.MyApplication;
 import com.weather.sy.syweather.R;
 
-/**
- * Created by wy on 2016/9/28.
- */
-
 public class MyLocationListener implements BDLocationListener {
 
     private Context context;

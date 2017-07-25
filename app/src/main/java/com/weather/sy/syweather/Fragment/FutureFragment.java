@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,28 +65,34 @@ public class FutureFragment extends BaseFragment {
 
     private void initData() throws Exception {
         WeatherBean weatherBean = HandleDaoData.getWeatherBean(HandleDaoData.getShowCity());
-        String[] weeks = DateUtil.
-                getNextWeek(new SimpleDateFormat("yyyy-MM-dd").
-                        parse(MyJson.getWeather(weatherBean).getDaily_forecast().get(0).getDate()));
+        try{
+            String[] weeks = DateUtil.
+                    getNextWeek(new SimpleDateFormat("yyyy-MM-dd").
+                            parse(MyJson.getWeather(weatherBean).getDaily_forecast().get(0).getDate()));
 
-        for(int i = 0;i < MyJson.getWeather(weatherBean).getDaily_forecast().size();i++) {
-            FutureContext fc = new FutureContext();
-            fc.setCond(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getCond().getTxt_d());
-            fc.setHum(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getHum());
-            fc.setTmp(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getTmp().getMax() + "°" + "/" +
-                    MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getTmp().getMin() + "°");
+            for(int i = 0;i < MyJson.getWeather(weatherBean).getDaily_forecast().size();i++) {
+                FutureContext fc = new FutureContext();
+                fc.setCond(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getCond().getTxt_d());
+                fc.setHum(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getHum());
+                fc.setTmp(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getTmp().getMax() + "°" + "/" +
+                        MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getTmp().getMin() + "°");
 
-            fc.setWind(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getWind().getSpd());
-            fc.setVis(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getVis());
-            fc.setPop(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getPop());
-            fc.setSunrise(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getAstro().getSr());
-            fc.setSunset(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getAstro().getSs());
-            fc.setPcpn(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getPcpn());
-            fc.setPres(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getPres());
-            fc.setDes(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getWind().getDir());
-            fc.setTime(weeks[i]);
-            lists.add(fc);
+                fc.setWind(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getWind().getSpd());
+                fc.setVis(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getVis());
+                fc.setPop(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getPop());
+                fc.setSunrise(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getAstro().getSr());
+                fc.setSunset(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getAstro().getSs());
+                fc.setPcpn(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getPcpn());
+                fc.setPres(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getPres());
+                fc.setDes(MyJson.getWeather(weatherBean).getDaily_forecast().get(i).getWind().getDir());
+                fc.setTime(weeks[i]);
+                lists.add(fc);
+            }
+        }catch (Exception e)
+        {
+            Log.e("sy","日期错误了："+e);
         }
+
 
         adapter = new FutureListAdapter(lists);
     }
