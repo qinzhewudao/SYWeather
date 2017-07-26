@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:textColor="@color/black"
-        android:text="@string/scenic_spot"
+        android:text="@string/setting"
         android:textSize="@dimen/itemTextSize"
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"

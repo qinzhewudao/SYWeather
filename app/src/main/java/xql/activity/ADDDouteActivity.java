@@ -82,8 +82,9 @@ public class ADDDouteActivity extends AppCompatActivity
         year  = bundle.getInt(yearKey);
         month = bundle.getInt(monthKey);
         day   = bundle.getInt(daykey);
+        day   = bundle.getInt(daykey);
 
-        editText.setText(year+"年"+month+"月"+day+"日");
+        //editText.setText(year+"年"+month+"月"+day+"日");
 
         setResult(10,null);
     }

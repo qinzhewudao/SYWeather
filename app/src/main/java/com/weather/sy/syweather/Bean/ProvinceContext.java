@@ -2,10 +2,6 @@ package com.weather.sy.syweather.Bean;
 
 import java.io.Serializable;
 
-/**
- * Created by byhieg on 16-9-15.
- * Mail byhieg@gmail.com
- */
 public class ProvinceContext implements Serializable{
     public int image;
     public String name;

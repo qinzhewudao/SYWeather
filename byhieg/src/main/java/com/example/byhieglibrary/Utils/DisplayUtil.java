@@ -3,9 +3,6 @@ package com.example.byhieglibrary.Utils;
 import android.content.Context;
 import android.view.View;
 
-/**
- * Created by byhieg on 16-8-7.
- */
 public class DisplayUtil {
     /**
      * 将px值转换为dip或dp值，保证尺寸大小不变

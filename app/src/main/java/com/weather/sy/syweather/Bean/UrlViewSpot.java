@@ -2,11 +2,6 @@ package com.weather.sy.syweather.Bean;
 
 import java.util.List;
 
-/**
- * Created by byhieg on 16-10-7.
- * Mail byhieg@gmail.com
- */
-
 public class UrlViewSpot {
 
 

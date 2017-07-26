@@ -56,7 +56,7 @@ public class Info implements Serializable{
     }
 
     public void setData(String data) {
-        this.data += data;
+        this.data = data;
     }
 
     @Override

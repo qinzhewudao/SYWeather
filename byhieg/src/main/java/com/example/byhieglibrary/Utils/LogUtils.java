@@ -1,14 +1,7 @@
 package com.example.byhieglibrary.Utils;
 
-/**
- * Created by byhieg on 16-4-16.
- */
 import android.util.Log;
 
-/**
- * Created by shiqifeng on 2016/3/23.
- * Mail:byhieg@gmail.com
- */
 public class LogUtils {
     public static final int VERBOSE = 1;
 

@@ -5,11 +5,6 @@ import android.net.Uri;
 
 import java.io.File;
 
-/**
- * Created by byhieg on 16-10-1.
- * Mail byhieg@gmail.com
- */
-
 public class ShareContent {
 
     public static final int SHARE_TEXT = 1;

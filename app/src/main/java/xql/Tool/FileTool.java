@@ -7,9 +7,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import xql.routeinfo.AllInfo;
 import xql.routeinfo.DayInfo;
@@ -114,6 +112,4 @@ public class FileTool {
         String timekey = key+"";
         return  timekey;
     }
-
-
 }

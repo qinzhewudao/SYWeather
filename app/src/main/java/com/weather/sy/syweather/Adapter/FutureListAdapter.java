@@ -12,11 +12,6 @@ import com.weather.sy.syweather.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by byhieg on 16-10-2.
- * Mail byhieg@gmail.com
- */
-
 public class FutureListAdapter extends RecyclerView.Adapter {
 
     private ArrayList<FutureContext> futureList;

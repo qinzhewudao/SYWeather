@@ -2,11 +2,6 @@ package com.weather.sy.syweather.Bean;
 
 import java.io.Serializable;
 
-/**
- * Created by byhieg on 16-10-2.
- * Mail byhieg@gmail.com
- */
-
 public class FutureContext implements Serializable {
 
     private String cond;

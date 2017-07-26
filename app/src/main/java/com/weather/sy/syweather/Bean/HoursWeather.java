@@ -2,11 +2,6 @@ package com.weather.sy.syweather.Bean;
 
 import java.io.Serializable;
 
-/**
- * Created by byhieg on 16-9-26.
- * Mail byhieg@gmail.com
- */
-
 public class HoursWeather implements Serializable{
 
     private String tmp;

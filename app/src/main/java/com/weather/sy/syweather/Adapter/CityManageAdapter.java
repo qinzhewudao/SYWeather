@@ -19,10 +19,6 @@ import com.weather.sy.syweather.Tools.WeatherColor;
 
 import java.util.List;
 
-/**
- * Created by byhieg on 16-10-7.
- * Mail byhieg@gmail.com
- */
 
 public class CityManageAdapter extends BaseAdapter{
 

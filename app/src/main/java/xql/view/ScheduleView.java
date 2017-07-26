@@ -1,6 +1,7 @@
 package xql.view;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +33,8 @@ public class ScheduleView extends LinearLayout
     private WeekDataView weekDataView;
     private RouteShowDeleteView routeShowDeleteView;
     private ImageView addImage;
-
+    private Bundle bundle1;
+    private ScheduleView a =this;
     private Context context;
 
     private AddRouteListener addRouteListener;
@@ -234,6 +236,7 @@ public class ScheduleView extends LinearLayout
     public void setAddRouteListener(AddRouteListener addRouteListener){
         this.addRouteListener = addRouteListener;
     }
+
     public interface AddRouteListener{
         void addRoute(View view) throws Exception;
     }

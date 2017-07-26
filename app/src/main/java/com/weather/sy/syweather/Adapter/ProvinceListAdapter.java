@@ -13,10 +13,6 @@ import com.weather.sy.syweather.R;
 
 import java.util.List;
 
-/**
- * Created by byhieg on 16-9-15.
- * Mail byhieg@gmail.com
- */
 public class ProvinceListAdapter extends BaseAdapter{
 
     private List<ProvinceContext> provinces;

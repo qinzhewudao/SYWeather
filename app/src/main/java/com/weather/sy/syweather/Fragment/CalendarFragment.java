@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.byhieglibrary.Activity.BaseActivity;
 import com.example.byhieglibrary.Activity.BaseFragment;
-import com.weather.sy.syweather.MyApplication;
 import com.weather.sy.syweather.R;
 
 import xql.Tool.FileTool;
@@ -50,9 +48,6 @@ public class CalendarFragment extends BaseFragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         a.setTheme(R.style.DayTheme);
-        if (MyApplication.nightMode2()) {
-            initNightView(R.layout.night_mode_overlay);
-        }
 
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
@@ -102,7 +97,6 @@ public class CalendarFragment extends BaseFragment{
 
         }
         scheduleView.mySelect(year,month,day);
-        Log.e("hahaha","我在抢占资源");
     }
     //保存文件
     private void saveRouteData(int year,int month,int day

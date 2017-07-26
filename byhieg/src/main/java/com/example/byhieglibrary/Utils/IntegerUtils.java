@@ -2,11 +2,6 @@ package com.example.byhieglibrary.Utils;
 
 import java.util.List;
 
-/**
- * Created by shiqifeng on 2016/9/21.
- * Mail:byhieg@gmail.com
- */
-
 public class IntegerUtils{
 
     public static int getSmallestNum(List<Integer> numbers){

@@ -55,7 +55,7 @@ public class NotificationService extends Service{
         notification.icon = R.mipmap.icon;
         notification.tickerText = "天气状况查看";
         notification.when = System.currentTimeMillis();
-        notification.flags = Notification.FLAG_NO_CLEAR;// 不能够自动清除
+        notification.flags = Notification.FLAG_AUTO_CANCEL;// 不能够自动清除
         notification.contentIntent = pendingIntent;
 
         RemoteViews contentViews = new RemoteViews(getPackageName(), R.layout.layout_notification);

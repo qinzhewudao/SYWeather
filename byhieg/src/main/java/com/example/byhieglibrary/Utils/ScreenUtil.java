@@ -5,9 +5,6 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
-/**
- * Created by byhieg on 16-8-7.
- */
 public class ScreenUtil {
     /**
      * 获取屏幕宽高，sdk17后不建议采用

@@ -53,6 +53,7 @@ public class RouteShowDeleteView extends ListView implements View.OnTouchListene
                 return false;
             }
 
+
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 if(!isShowButton &&Math.abs(velocityX)>Math.abs(velocityY)
@@ -90,8 +91,9 @@ public class RouteShowDeleteView extends ListView implements View.OnTouchListene
             isShowButton = false;
             buttonView = null;
             return false;
-        }else
-            return detector.onTouchEvent(event);
+        }
+        return detector.onTouchEvent(event);
+
     }
 
     public interface DelectListener{

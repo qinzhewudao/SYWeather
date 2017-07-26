@@ -2,10 +2,6 @@ package com.weather.sy.syweather.Bean;
 
 import java.util.List;
 
-/**
- * Created by shiqifeng on 2016/6/30.
- * Mail:byhieg@gmail.com
- */
 public class UrlCity {
 
     private String status;

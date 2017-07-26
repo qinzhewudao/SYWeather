@@ -24,10 +24,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by shiqifeng on 2016/9/21.
- * Mail:byhieg@gmail.com
- */
 
 public class WeekWeatherView extends View {
 

@@ -25,7 +25,6 @@ public class DaoSession extends AbstractDaoSession {
     private final DaoConfig loveCityDaoConfig;
     private final DaoConfig viewSpotDaoConfig;
     private final DaoConfig viewSpotWeatherDaoConfig;
-    private final DaoConfig loveViewSpotDaoConfig;
 
     private final ProvinceDao provinceDao;
     private final CityDao cityDao;
@@ -34,7 +33,6 @@ public class DaoSession extends AbstractDaoSession {
     private final LoveCityDao loveCityDao;
     private final ViewSpotDao viewSpotDao;
     private final ViewSpotWeatherDao viewSpotWeatherDao;
-    private final LoveViewSpotDao loveViewSpotDao;
 
     public DaoSession(SQLiteDatabase db, IdentityScopeType type, Map<Class<? extends AbstractDao<?, ?>>, DaoConfig>
             daoConfigMap) {
@@ -61,8 +59,6 @@ public class DaoSession extends AbstractDaoSession {
         viewSpotWeatherDaoConfig = daoConfigMap.get(ViewSpotWeatherDao.class).clone();
         viewSpotWeatherDaoConfig.initIdentityScope(type);
 
-        loveViewSpotDaoConfig = daoConfigMap.get(LoveViewSpotDao.class).clone();
-        loveViewSpotDaoConfig.initIdentityScope(type);
 
         provinceDao = new ProvinceDao(provinceDaoConfig, this);
         cityDao = new CityDao(cityDaoConfig, this);
@@ -71,7 +67,6 @@ public class DaoSession extends AbstractDaoSession {
         loveCityDao = new LoveCityDao(loveCityDaoConfig, this);
         viewSpotDao = new ViewSpotDao(viewSpotDaoConfig, this);
         viewSpotWeatherDao = new ViewSpotWeatherDao(viewSpotWeatherDaoConfig, this);
-        loveViewSpotDao = new LoveViewSpotDao(loveViewSpotDaoConfig, this);
 
         registerDao(Province.class, provinceDao);
         registerDao(City.class, cityDao);
@@ -80,7 +75,6 @@ public class DaoSession extends AbstractDaoSession {
         registerDao(LoveCity.class, loveCityDao);
         registerDao(ViewSpot.class, viewSpotDao);
         registerDao(ViewSpotWeather.class, viewSpotWeatherDao);
-        registerDao(LoveViewSpot.class, loveViewSpotDao);
     }
     
     public void clear() {
@@ -91,7 +85,6 @@ public class DaoSession extends AbstractDaoSession {
         loveCityDaoConfig.getIdentityScope().clear();
         viewSpotDaoConfig.getIdentityScope().clear();
         viewSpotWeatherDaoConfig.getIdentityScope().clear();
-        loveViewSpotDaoConfig.getIdentityScope().clear();
     }
 
     public ProvinceDao getProvinceDao() {
@@ -116,14 +109,6 @@ public class DaoSession extends AbstractDaoSession {
 
     public ViewSpotDao getViewSpotDao() {
         return viewSpotDao;
-    }
-
-    public ViewSpotWeatherDao getViewSpotWeatherDao() {
-        return viewSpotWeatherDao;
-    }
-
-    public LoveViewSpotDao getLoveViewSpotDao() {
-        return loveViewSpotDao;
     }
 
 }

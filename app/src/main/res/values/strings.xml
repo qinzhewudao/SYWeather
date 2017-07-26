@@ -6,7 +6,6 @@
     <string name="location">定位</string>
 
     <!--侧边栏list中的文字-->
-    <string name="scenic_spot">景点</string>
     <string name="setting">设置</string>
     <string name="share">分享天气</string>
     <string name="wiki">天气百科</string>

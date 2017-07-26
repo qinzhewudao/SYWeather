@@ -13,11 +13,6 @@ import com.weather.sy.syweather.R;
 
 import java.util.List;
 
-/**
- * Created by byhieg on 16-9-26.
- * Mail byhieg@gmail.com
- */
-
 public class PopupWindowAdapter extends BaseAdapter{
 
     private List<HoursWeather> hoursWeathers;
